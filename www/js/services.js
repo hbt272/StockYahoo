@@ -4,9 +4,28 @@ angular.module('stockYahoo.services', [])
      return {
       encode: function(string) {
        return encodeURIComponent(string).replace(/\"/g, "%22").replace(/\ /g, "%20").replace(/[!'()]/g, escape);
-     }
-   };
-})
+      }
+     };
+   })
+
+	.factory('dateService', function($filter){
+ 		var currentDate = function(){
+ 			var d =  new Date();
+ 			var date = $filter('date')(d,'yyyy-MM-dd');
+ 			return date;
+ 		};
+
+ 		var oneYearAgoDate = function(){
+ 			var d =  new Date(new Date().setDate(new Date().getDate() - 365));
+ 			var date = $filter('date')(d,'yyyy-MM-dd');
+ 			return date;
+ 		};
+
+ 		return {
+ 			currentDate: currentDate,
+ 			oneYearAgoDate: oneYearAgoDate
+ 		}
+	})
 
 	.factory('stockDataService',function($q, $http, encodeURIService){
 
