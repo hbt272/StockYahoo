@@ -10,7 +10,7 @@ angular.module('stockYahoo.services', [])
 
 	.factory('stockDataService',function($q, $http, encodeURIService){
 
-		var getDetailData = function(ticker){
+		var getDetailsData = function(ticker){
 			var deferred = $q.defer(),
 			query = 'select * from yahoo.finance.quotes where symbol IN ("' + ticker + '")',
 			url = "http://query.yahooapis.com/v1/public/yql?q=" + encodeURIService.encode(query) + "&format=json&env=http://datatables.org/alltables.env";
@@ -47,7 +47,7 @@ angular.module('stockYahoo.services', [])
 
 		return {
 			getPriceData: getPriceData,
-			getDetailData: getDetailData
+			getDetailsData: getDetailsData
 		}
 	})
 
