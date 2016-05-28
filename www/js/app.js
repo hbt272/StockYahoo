@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('stockYahoo', [
-  'ionic', 
+  'ionic',
+  'nvd3',
+  'nvChart',
   'stockYahoo.controllers',
   'stockYahoo.services',
   'stockYahoo.filters',
